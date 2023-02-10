@@ -1,0 +1,45 @@
+<h2 class="about-header">Starship</h2>
+<table class="about-table">
+  <tr>
+    <th>Name</th>
+    <td id="ship-name"></td>
+  </tr>
+  <tr>
+    <th>Model</th>
+    <td id="ship-model"></td>
+  </tr>
+  <tr>
+    <th>Manufacturer</th>
+    <td id="ship-manufacturer"></td>
+  </tr>
+  <tr>
+    <th>Crew</th>
+    <td id="ship-crew"></td>
+  </tr>
+  <tr>
+    <th>Passengers</th>
+    <td id="ship-passengers"></td>
+  </tr>
+  <tr>
+    <th>Cargo Capacity</th>
+    <td id="ship-cargo"></td>
+  </tr>
+  <tr>
+    <th>Cost in Credits</th>
+    <td id="ship-cost"></td>
+  </tr>
+  <tr>
+    <th>Length</th>
+    <td id="ship-length"></td>
+  </tr>
+</table>
+<script>
+  $("#ship-name").text(selectedShip.name);
+  $("#ship-model").text(selectedShip.model);
+  $("#ship-manufacturer").text(selectedShip.manufacturer);
+  $("#ship-crew").text(selectedShip.crew);
+  $("#ship-passengers").text(selectedShip.passengers);
+  $("#ship-cargo").text(selectedShip.cargo_capacity);
+  $("#ship-cost").text(selectedShip.cost_in_credits);
+  $("#ship-length").text(selectedShip.length + "m");
+</script>

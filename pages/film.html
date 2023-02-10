@@ -1,0 +1,30 @@
+<h2 class="about-header">Film</h2>
+<table class="about-table">
+  <tr>
+    <th>Title</th>
+    <td id="film-title"></td>
+  </tr>
+  <tr>
+    <th>Director</th>
+    <td id="film-director"></td>
+  </tr>
+  <tr>
+    <th>Producer(s)</th>
+    <td id="film-producer"></td>
+  </tr>
+  <tr>
+    <th>Release Date</th>
+    <td id="film-release-date"></td>
+  </tr>
+  <tr>
+    <th>Episode</th>
+    <td id="film-episode"></td>
+  </tr>
+</table>
+<script>
+  $("#film-title").text(selectedFilm.title);
+  $("#film-director").text(selectedFilm.director);
+  $("#film-producer").text(selectedFilm.producer);
+  $("#film-release-date").text(selectedFilm.release_date);
+  $("#film-episode").text(selectedFilm.episode_id);
+</script>

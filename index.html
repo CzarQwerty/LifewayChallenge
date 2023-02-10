@@ -1,0 +1,107 @@
+<html>
+<head>
+    <title>Star Wars Search</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/themes/smoothness/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <link href="https://fonts.cdnfonts.com/css/star-wars" rel="stylesheet">
+    <script src="js/api-cache.js"></script>
+    <script src="js/main.js"></script>
+
+    <script>
+        // setup auto complete textbox
+        $( function() {
+            $( "#characters" ).autocomplete({
+                source: function( request, response ) {
+                    $.getJSON( "https://swapi.dev/api/people/", { search: request.term }, function(data) {
+                        response(data.results);
+                    })
+                },
+                minLength: 1,
+                focus: function( event, ui ) {
+                    $( "#characters" ).val( ui.item.name );
+                    return false;
+                },
+                select: function( event, ui ) {
+                    loadCharacter( ui.item );
+                    return false;
+                }
+            } ).autocomplete( "instance" )._renderItem = function( ul, item ) {
+                return $( "<li>" ).append("<div>" + item.name + "</div>").appendTo( ul );
+            };
+        } );
+    </script>
+</head>
+<body>
+    <div class="header">
+        <img class="header-img" src="img/Star-wars-logo-new-tall.jpg">
+        Welcome to the Star Wars Character Search
+    </div>
+    <div class="ui-widget">
+        <label for="characters">Search for Characters: </label>
+        <input type="text" id="characters" placeholder="Start typing a name..." size="30">
+    </div>
+    <div>
+        <div id="character-result" class="ui-widget character-area">
+            <button id="close-result" class="close-button" onclick="closeResult()">&times;</button>
+            <h2 class="about-header">About</h2>
+            <table class="about-table">
+                <tr>
+                    <th>Name</th>
+                    <td id="char-name"></td>
+                </tr>
+                <tr class="gray-bar">
+                    <th>Birth Year</th>
+                    <td id="birth-year"></td>
+                </tr>
+                <tr>
+                    <th>Eye Color</th>
+                    <td id="eye-color"></td>
+                </tr>
+                <tr class="gray-bar">
+                    <th>Gender</th>
+                    <td id="gender"></td>
+                </tr>
+                <tr>
+                    <th>Hair Color</th>
+                    <td id="hair-color"></td>
+                </tr>
+                <tr class="gray-bar">
+                    <th>Height</th>
+                    <td id="char-height"></td>
+                </tr>
+                <tr>
+                    <th>Mass</th>
+                    <td id="char-mass"></td>
+                </tr>
+                <tr class="gray-bar">
+                    <th>Skin Color</th>
+                    <td id="skin-color"></td>
+                </tr>
+                <tr>
+                    <th>Species</th>
+                    <td id="char-species"></td>
+                </tr>
+                <tr class="gray-bar">
+                    <th>Home World</th>
+                    <td id="char-home-world"></td>
+                </tr>
+                <tr>
+                    <th>Films In</th>
+                    <td id="char-films"></td>
+                </tr>
+                <tr class="gray-bar">
+                    <th>Starships Flown</th>
+                    <td id="char-ships"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="extended-result" class="extended-area ui-widget">
+            <button id="close-extended" class="close-button" onclick="resetExtendedArea()">&times;</button>
+            <div id="ajax-area"></div>
+        </div>
+    </div>
+</body>
+</html>

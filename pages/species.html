@@ -1,0 +1,50 @@
+<h2 class="about-header">Species</h2>
+<table class="about-table">
+  <tr>
+    <th>Name</th>
+    <td id="species-name"></td>
+  </tr>
+  <tr>
+    <th>Language</th>
+    <td id="species-language"></td>
+  </tr>
+  <tr>
+    <th>Home World</th>
+    <td id="species-home-world"></td>
+  </tr>
+  <tr>
+    <th>Classification</th>
+    <td id="species-classification"></td>
+  </tr>
+  <tr>
+    <th>Designation</th>
+    <td id="species-designation"></td>
+  </tr>
+  <tr>
+    <th>Possible Eye Colors</th>
+    <td id="species-eye-colors"></td>
+  </tr>
+  <tr>
+    <th>Possible Hair Colors</th>
+    <td id="species-hair-colors"></td>
+  </tr>
+  <tr>
+    <th>Possible Skin Colors</th>
+    <td id="species-skin-colors"></td>
+  </tr>
+</table>
+<script>
+  $("#species-name").text(selectedSpecies.name);
+  $("#species-language").text(selectedSpecies.language);
+  $("#species-classification").text(selectedSpecies.classification);
+  $("#species-designation").text(selectedSpecies.designation);
+  $("#species-eye-colors").text(selectedSpecies.eye_colors);
+  $("#species-hair-colors").text(selectedSpecies.hair_colors);
+  $("#species-skin-colors").text(selectedSpecies.skin_colors);
+  $("#species-home-world").text("");
+  getPlanet(selectedSpecies.homeworld, fillHomeWorld);
+
+  function fillHomeWorld( item ) {
+    $("#species-home-world").text(item.name);
+  }
+</script>
